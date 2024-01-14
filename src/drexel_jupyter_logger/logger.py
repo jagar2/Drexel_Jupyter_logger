@@ -86,3 +86,31 @@ def variable_logger(my_variable):
         encrypt_output(message, key)
     except:
         message = f"fail at {timestamp}."
+
+def variable_logger_csv(my_variable, info_type="question"):
+    try:
+        frame = inspect.currentframe()
+        name = None
+        try:
+            # get the caller's frame
+            caller_frame = frame.f_back
+
+            # get the local variables in the caller's frame
+            locals_dict = caller_frame.f_locals
+
+            # find the name of the variable passed to the function
+            for var_name in locals_dict:
+                if id(my_variable) == id(locals_dict[var_name]):
+                    name = var_name
+                    break
+        finally:
+            # always delete the frame reference to avoid memory leaks
+            del frame
+
+        timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+        message = f"{info_type}, {name}, {my_variable}, {timestamp}."
+
+        encrypt_output(message, key)
+    except:
+        message = f"fail at {timestamp}."
