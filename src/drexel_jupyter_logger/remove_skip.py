@@ -3,7 +3,7 @@
 import nbformat
 import sys
 
-def remove_skip_execution_tags(notebook_path):
+def main(notebook_path):
    # Load the Jupyter Notebook
    notebook = nbformat.read(notebook_path, as_version=4)
 
@@ -26,4 +26,4 @@ if __name__ == "__main__":
       sys.exit(1)
 
    input_notebook_path = sys.argv[1]
-   output_notebook_path = remove_skip_execution_tags(input_notebook_path)
+   output_notebook_path = main(input_notebook_path)
