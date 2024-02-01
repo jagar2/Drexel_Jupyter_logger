@@ -30,13 +30,14 @@ def encrypt_output(output, key):
 
 
 # Function to decrypt the output with the predefined key
-def decrypt_outputs(encrypted_output):
+def decrypt_outputs(encrypted_output, write_to_log=False):
     # Create a Fernet object with the predefined key
     fernet = Fernet(key)
 
     # Decrypt the output
     decrypted_output = fernet.decrypt(encrypted_output.encode()).decode()
-    logging.info(f"Decrypted Output: {decrypted_output}")
+    if write_to_log:
+        logging.info(f"Decrypted Output: {decrypted_output}")
     return decrypted_output
 
 

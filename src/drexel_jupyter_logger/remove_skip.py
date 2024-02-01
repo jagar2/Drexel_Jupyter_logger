@@ -2,8 +2,9 @@
 
 import nbformat
 import sys
+import argparse
 
-def main(notebook_path):
+def process_notebook(notebook_path):
    # Load the Jupyter Notebook
    notebook = nbformat.read(notebook_path, as_version=4)
 
@@ -20,10 +21,11 @@ def main(notebook_path):
    nbformat.write(notebook, notebook_path)
    return notebook_path
 
-if __name__ == "__main__":
-   if len(sys.argv) != 2:
-      print("Usage: python script_name.py <notebook_path>")
-      sys.exit(1)
+def main():
+   parser = argparse.ArgumentParser(description="Process Jupyter notebooks to modify certain cells")
+   parser.add_argument('notebook', type=str, help='Jupyter notebook')
+   args = parser.parse_args()
+   process_notebook(args.notebook)
 
-   input_notebook_path = sys.argv[1]
-   output_notebook_path = main(input_notebook_path)
+if __name__ == "__main__":
+   main()
