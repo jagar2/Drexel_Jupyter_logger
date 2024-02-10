@@ -54,18 +54,30 @@ def save_student_score_report(assignment_id,
         :param scores_data: List of dictionaries, each containing question_id, score, max_score, and visibility.
         :param file_path: Path where the markdown file will be saved.
         """
+        
+        # Get the current UTC time
+        now_utc = datetime.now(timezone.utc)
+
+        # East Coast of the United States is typically UTC-5, but during Daylight Saving Time it's UTC-4
+        # Checking if it's Daylight Saving Time
+        east_coast_time = now_utc - timedelta(hours=4 if now_utc.dst() else 5)
+
+        # Format the date and time in a nice string format
+        formatted_date_time = east_coast_time.strftime("%Y-%m-%d %H:%M:%S")
+        
         # Building the markdown content
         markdown_content = f"# Score for {assignment_id}\n\n"
         markdown_content += "### Student Information\n"
         markdown_content += f"- **First Name:** {student_info['first_name']}\n"
         markdown_content += f"- **Last Name:** {student_info['last_name']}\n"
         markdown_content += f"- **Student ID:** {student_info['student_id']}\n"
-        markdown_content += f"- **Email:** {student_info['email']}\n\n"
+        markdown_content += f"- **Email:** {student_info['email']}\n"
+        markdown_content += f"- **Submission Time:** {formatted_date_time}\n\n"
 
         markdown_content += "### Scores\n\n"
         markdown_content += "| Total Score | Maximum Score | Percentage |\n"
         markdown_content += "|-------------|---------------|------------|\n"
-        markdown_content += f"| {total_score} | {max_total_score} | {percentage_score}% |\n\n"
+        markdown_content += f"| {total_score} | {max_total_score} | {percentage_score:0.2f}% |\n\n"
 
         markdown_content += "### Detailed Scores\n\n"
         markdown_content += "| Question ID | Score | Max Score | Visibility |\n"

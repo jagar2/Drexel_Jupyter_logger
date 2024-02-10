@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name = "drexel_jupyter_logger",
-    version= "0.0.11",
+    version= "0.0.12",
     author = "Joshua C. Agar",
     description= "drexel jupyter logger package",
     packages=["drexel_jupyter_logger"],
