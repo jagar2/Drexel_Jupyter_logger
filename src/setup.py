@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name = "drexel_jupyter_logger",
-    version= "0.0.12",
+    version= "0.0.13",
     author = "Joshua C. Agar",
     description= "drexel jupyter logger package",
     packages=["drexel_jupyter_logger"],
@@ -16,6 +16,7 @@ setuptools.setup(
             'remove-skip=drexel_jupyter_logger.remove_skip:main',
             'tag-files=drexel_jupyter_logger.tag_files:main',
             'activity=drexel_jupyter_logger.activity:main',
+            'fix_kernel=drexel_jupyter_logger.fix_kernel:main',
         ],
     }
 )

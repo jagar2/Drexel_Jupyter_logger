@@ -5,3 +5,4 @@ from .build_quiz_for_jupyterbook import *
 from .read_log_file import *
 from .remove_skip import *
 from .tag_files import *
+from .fix_kernel import *
