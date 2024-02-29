@@ -6,3 +6,5 @@ from .read_log_file import *
 from .remove_skip import *
 from .tag_files import *
 from .fix_kernel import *
+from .section_toc import *
+from .week_toc import *
