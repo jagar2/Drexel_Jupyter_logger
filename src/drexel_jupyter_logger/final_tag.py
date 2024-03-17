@@ -8,7 +8,7 @@ def process_notebook(file_path):
       nb = nbformat.read(f, as_version=4)
 
    for cell in nb.cells:
-      if cell.cell_type == 'code' and ['ValidateLogFile','submit_question()'] in cell.source:
+      if cell.cell_type == 'code' and ('ValidateLogFile' in cell.source or 'submit_question()' in cell.source):
          if 'tags' not in cell.metadata:
                cell.metadata['tags'] = []
          if 'skip-execution' not in cell.metadata['tags']:
@@ -25,7 +25,7 @@ def main():
    parser.add_argument('notebook', type=str, help='Location of Jupyter notebook')
    args = parser.parse_args()
    
-   if args.notebook_dir.endswith('.ipynb'):
+   if args.notebook.endswith('.ipynb'):
        process_notebook(args.notebook)
    else:
        raise ValueError("The file provided is not a Jupyter notebook.")
