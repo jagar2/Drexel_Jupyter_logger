@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name = "drexel_jupyter_logger",
-    version= "0.0.15",
+    version= "0.0.17",
     author = "Joshua C. Agar",
     description= "drexel jupyter logger package",
     packages=["drexel_jupyter_logger"],
@@ -19,6 +19,7 @@ setuptools.setup(
             'fix_kernel=drexel_jupyter_logger.fix_kernel:main',
             'section_toc=drexel_jupyter_logger.section_toc:main',
             'week_toc=drexel_jupyter_logger.week_toc:main',
+            'final_tag=drexel_jupyter_logger.final_tag:main',
         ],
     }
 )
